@@ -5,6 +5,8 @@
  * @package wp
  */
 
+namespace Ngearing\Wp;
+
 ?>
 
 <div class="wrap" id="myplugin-admin">
