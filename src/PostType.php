@@ -125,7 +125,7 @@ class PostType {
 			],
 			'public'       => true,
 			'show_in_rest' => true,
-			'supports'     => [ 'title', 'author', 'revisions', 'editor' ],
+			'supports'     => [ 'title', 'author', 'revisions', 'editor', 'thumbnail' ],
 			'has_archive'  => true,
 		];
 
