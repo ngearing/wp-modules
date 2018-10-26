@@ -40,6 +40,8 @@ class PostType {
 	private $args;
 
 	public function __construct( $name, $args = [] ) {
+		$plural = '';
+		$title  = '';
 
 		if ( \is_array( $name ) ) {
 			$plural = $name[2] ?: false;
