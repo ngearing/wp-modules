@@ -9,10 +9,6 @@ class Page extends Post {
 	/**
 	 * The post object type.
 	 */
-	const post_type = 'page';
+	const POST_TYPE = 'page';
 
-	// public function __construct( $post_id ) {
-	// parent::__construct( $post_id );
-	// return this;
-	// }
 }
