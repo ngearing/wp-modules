@@ -14,18 +14,36 @@ namespace Ngearing\Wp;
  */
 class AdminPage {
 
-	public function __construct(
-		$menu_title = 'My Plugin',
-		$args = [
-			'menu_slug',
-			'page_title',
-			'capability',
-			'parent_slug',
-			'template_path',
-			'template_name',
-			'render_func',
-		]
-	) {
+	var $settings = [];
+
+	/**
+	 * Setup variables.
+	 *
+	 * @param string $menu_title The name of admin page.
+	 * @param array  $args        Args used to setup the admin page.
+	 *  $args = [
+	 *    'menu_slug'   => (string) The menu name.
+	 *    'page_title'  => (string) Title to display at the top of the page.
+	 *    'capability'  => (string) User Capabilty required to view this page.
+	 *    'parent_slug' => (string) The parent admin page name.
+	 *    'template'    => (string) The full path to template.
+	 *    'render_func' => (callable) A callable to render the admin page, instead of a template. (optional)
+	 *  ]
+	 */
+	public function __construct( $menu_title = 'My Plugin', $args = [] ) {
+
+		$this->settings = array_replace_recursive(
+			[
+				'menu_slug'   => strtolower( str_replace( ' ', '_', $menu_title ) ),
+				'page_title'  => "$menu_title Admin Page",
+				'capability'  => 'install_plugins',
+				'parent_slug' => 'options-general.php',
+				'template'    => __DIR__ . 'templates/admin-page-template.php',
+				'render_func' => '',
+			],
+			$args
+		);
+
 		$this->title         = $menu_title;
 		$this->slug          = isset( $args['menu_slug'] ) ? $args['menu_slug'] : strtolower( str_replace( ' ', '_', $menu_title ) );
 		$this->page_title    = isset( $args['page_title'] ) ? $args['page_title'] : "$menu_title Admin Page";
