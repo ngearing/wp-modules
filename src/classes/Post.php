@@ -1,4 +1,9 @@
 <?php
+/**
+ * Post Class
+ *
+ * @package ngearing
+ */
 
 namespace Ngearing\Wp;
 
@@ -9,28 +14,52 @@ class Post {
 
 	/**
 	 * The post object.
+	 *
+	 * @var object $post
 	 */
-	var $post;
+	public $post = null;
 
 	/**
 	 * The post ID.
+	 *
+	 * @var integer $ID
 	 */
-	var $ID;
+	public $ID;
+
+	/**
+	 * The post ID.
+	 *
+	 * @var string $name
+	 */
+	public $name;
+
+	/**
+	 * The post ID.
+	 *
+	 * @var string $title
+	 */
+	public $title;
 
 	/**
 	 * The post object type.
 	 */
-	const post_type = 'post';
+	const POST_TYPE = 'post';
 
+	/**
+	 * Get and return post object.
+	 *
+	 * @param integer $post_id The post ID to get.
+	 */
 	public function __construct( $post_id ) {
-		$post       = get_post( $post_id );
-		$this->post = $post;
-		$this->ID   = $post->ID;
+		$post        = get_post( $post_id );
+		$this->post  = $post;
+		$this->ID    = $post->ID;
+		$this->name  = $post->post_name;
+		$this->title = $post->post_title;
 
 		if ( ! $post ) {
 			return false;
 		}
-
 	}
 
 	/**
@@ -42,7 +71,7 @@ class Post {
 	public static function get_by_name( $name ) {
 		$posts = get_posts(
 			[
-				'post_type' => static::post_type,
+				'post_type' => static::POST_TYPE,
 				'name'      => $name,
 				'fields'    => 'ids',
 			]
