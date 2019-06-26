@@ -2,7 +2,7 @@
 
 namespace Ngearing\Wp;
 
-class PostType {
+class RegisterPostType {
 
 	/**
 	 * Name of post type, lowercase no spaces.
