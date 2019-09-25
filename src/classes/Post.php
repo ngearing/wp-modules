@@ -51,15 +51,15 @@ class Post {
 	 * @param integer $post_id The post ID to get.
 	 */
 	public function __construct( $post_id ) {
-		$post        = get_post( $post_id );
-		$this->post  = $post;
-		$this->ID    = $post->ID;
-		$this->name  = $post->post_name;
-		$this->title = $post->post_title;
-
+		$post = get_post( $post_id );
 		if ( ! $post ) {
 			return false;
 		}
+
+		$this->post  = $post;
+		$this->ID    = $post->ID;
+		$this->name  = $post->post_name;
+		$this->title = get_the_title( $post_id );
 	}
 
 	/**
