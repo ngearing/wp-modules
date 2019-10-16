@@ -44,8 +44,8 @@ class RegisterPostType {
 		$title  = '';
 
 		if ( \is_array( $name ) ) {
-			$plural = $name[2] ?: false;
-			$title  = $name[1] ?: false;
+			$plural = isset( $name[2] ) ? $name[2] : false;
+			$title  = isset( $name[1] ) ? $name[1] : false;
 			$name   = $name[0];
 		}
 		$this->name   = $name;
