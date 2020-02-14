@@ -2,7 +2,7 @@
 
 namespace Wp;
 
-class PostTax {
+class RegisterPostTaxonomy {
 
 	/**
 	 * Name of post tax, lowercase no spaces.
